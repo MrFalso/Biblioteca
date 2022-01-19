@@ -15,7 +15,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            margin-top: 1450px;
+            margin-top: 480px;
         }
         
         .grid {
@@ -25,7 +25,6 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            margin-top: 250px;
         }
 
         .grid2 {
@@ -35,7 +34,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            margin-top: 1450px;
+            margin-top: 1180px;
         }
 
         header {
@@ -74,10 +73,10 @@
         echo "
         <header>
         <a href=libri.php><img src=img/logo.png width=120px style=padding: 10px;></a>
-            <table border=0 align=right cellspacing=2 height=100% width=300px>
+            <table border=1 align=right cellspacing=2 height=100% width=300px>
                 <tr align=center>
                     <td rowspan=2><img src=img/online.png width=20 height=20></td>
-                    <td rowspan=2 align=center><p>".$_SESSION['user']."</p></td>
+                    <td rowspan=2 align=center width=120px><p>".$_SESSION['user']."</p><a href=exit.php><p>esci</p></a></td>
                     <td><a href=carrello.php> <img src=img/carrello.png width=50></a></td>
                 </tr>
             </table>
@@ -103,11 +102,14 @@
         ";
 
         if (isset($_GET["tipologia"])) {
-            if ($_GET['tipologia'] == 'fantasy')
-                echo"<div class=fantasy>";
-            else
-                echo"<div class=grid>";
-
+            if ($_GET['tipologia'] == 'Fantasy') {
+                 echo"<div class=fantasy>";
+                 echo "<script>console.log('fantasy');</script>";
+            } else {
+                echo "<script>console.log('grid');</script>";
+                echo"<div class=grid>"; 
+            }
+            
             if ($file != false) {
                 while (($data = fgetcsv($file, 1000, ",")) != false) {
                     $vet = explode(";", $data[0]);
