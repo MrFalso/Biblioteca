@@ -52,6 +52,24 @@
         .tabella tbody tr:last-of-type {
             border-bottom: 2px solid #1d3557;
         }
+
+        .exit {
+            font-size: 15px;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .exit:hover {
+            color: red;
+        }
+
+        .home {
+            margin-top: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <body>
@@ -65,7 +83,7 @@
         <table border=0 align=right cellspacing=2 height=100% width=300px>
             <tr align=center>
                 <td rowspan=2><img src=img/online.png width=20 height=20></td>
-                <td rowspan=2 align=center><p class=user>".$_SESSION['user']."</p></td>
+                <td rowspan=2 align=center><p class=user>".strtoupper($_SESSION['user'])."</p><a href=exit.php><p class=exit>Sign Out</p></a></td>
                 <td><a href=carrello.php> <img src=img/carrello.png width=50></a></td>
             </tr>
         </table>
@@ -103,6 +121,16 @@
     }
     echo "</table>";
     fclose($file);
+
+    echo "
+        <table class=home>
+            <tr>
+                <td>
+                    <a href=libri.php><img src=img/home.png width=100 height=100></a>
+                </td>
+            </tr>
+        </table>
+    ";
 ?>
 </body>
 </html>
